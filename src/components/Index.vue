@@ -1,6 +1,15 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <h1>Toutes les photos</h1>
+    <ul>
+      <li v-for="(photo, index) in photos">
+        <p>
+          {{photo.title}}
+          <button class="btn btn-danger" @click="deletePhoto(photo.id, index)">Supprimer</button><br/>
+          <img :src="photo.url"/>
+        </p>
+      </li>
+    </ul>
 
   </div>
 </template>
@@ -10,7 +19,24 @@ export default {
   name: 'Index',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      photos: []
+    }
+  },
+  mounted: function () {
+    this.getPhotos();
+  },
+  methods: {
+    getPhotos: function () {
+      this.$http.get('https://jsonplaceholder.typicode.com/photos').then(response => {
+        this.photos = response.data;
+      })
+    },
+    deletePhoto: function (id, index) {
+      this.$http.delete('https://jsonplaceholder.typicode.com/photos/' + id).then(response => {
+        if (response.status == 200) {
+          this.photos.splice(index, 1);
+        }
+      })
     }
   }
 }
@@ -18,21 +44,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
