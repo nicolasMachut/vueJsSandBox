@@ -1,5 +1,6 @@
 <template>
   <div>
+    <b-alert variant="success" dismissible @dismissed="showDismissibleAlert=false" :show="showDismissibleAlert">Photo supprimée</b-alert>
     <h1>Toutes les photos</h1>
     <ul>
       <li v-for="(photo, index) in photos">
@@ -19,7 +20,8 @@ export default {
   name: 'Index',
   data () {
     return {
-      photos: []
+      photos: [],
+      showDismissibleAlert: false
     }
   },
   mounted: function () {
@@ -35,6 +37,7 @@ export default {
       this.$http.delete('https://jsonplaceholder.typicode.com/photos/' + id).then(response => {
         if (response.status == 200) {
           this.photos.splice(index, 1);
+          this.showDismissibleAlert = true;
         }
       })
     }
