@@ -7,10 +7,10 @@ import Page2 from '@/components/Page2'
 import Child1 from '@/components/Child1'
 import Child2 from '@/components/Child2'
 
-
 Vue.use(Router)
 
 export default new Router({
+  //linkActiveClass: "active",
   routes: [
     {
       path: '/',
@@ -27,13 +27,7 @@ export default new Router({
       component: User,
       data: {
         userId: 1
-      }/*,
-      children: [
-        {
-          path: 'child1',
-          component: Album
-        }
-      ]*/
+      }
     },
     {
       path: '/page2',
