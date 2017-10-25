@@ -9,6 +9,7 @@
         <li @click="toggle()" :class="{active : actualPage === 'Page2'}"><router-link to="/page2">Page2</router-link></li>
         <li @click="toggle()" :class="{active : actualPage === 'Page3'}"><router-link to="/page3">Page3</router-link></li>
         <li @click="toggle()" :class="{active : actualPage === 'Page4'}"><router-link to="/page4">Page4</router-link></li>
+        <li>Store {{$store.state.test}}</li>
       </ul>
     </div>
   </nav>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Page 2</h1>
+    <button class="btn btn-default" @click="$store.commit('INCREMENT_TEST')"> INCREMENT STORE VALUE</button>
     <ul>
       <li><router-link to="/page2/child1">child 1</router-link></li>
       <li><router-link to="/page2/child2">child 2</router-link></li>

@@ -5,18 +5,20 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
+import store from './store.js';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.use(VueResource);
 Vue.use(BootstrapVue);
 
 /* eslint-disable no-new */
 new Vue({
+  store,
   el: '#app',
   router,
   template: '<App/>',
   components: { App }
-})
+});
