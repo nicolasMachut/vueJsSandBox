@@ -1,12 +1,16 @@
 <template>
   <div>
     <h1>User</h1>
+
+    <router-view></router-view>
+
     <pre>{{user}}</pre>
     <span v-if="!update">{{user.name}}</span>
     <input v-else type="text" v-model="user.name"/>
 
     <button v-if="update" @click="update = !update">Valider</button>
     <button v-else @click="update = !update">Modifier</button>
+
   </div>
 </template>
 
